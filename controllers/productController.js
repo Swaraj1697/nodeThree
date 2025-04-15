@@ -22,16 +22,17 @@ const getProductById = async (req, res) => {
 // create a product
 const createProduct = async (req, res) => {
     const body = req.body;
-    console.log("creating product");
+    console.log(req.body);
     try {
         const product = await ProductModel.create({
             // Insert into products (col definition) values (body)
             product_name: body.product_name,
             product_price: body.product_price,
-            isInStock: body.isInStock,
+            inStock: body.inStock,
             category: body.category,
             password: body.password,
             confirmPassword: body.confirmPassword,
+            discount: body.discount,
         });
         console.log("product created", product);
         return res
